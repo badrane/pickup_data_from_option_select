@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body class="text-center">
+
+
+        <form class="pb-4 mx-auto " action="/reservations/save" method="POST">
+            <div class="form-group">
+              <select id="selectatelier" name='id_atelier'>
+                    <option>Choisi</option>
+                    <option data-nbr-nbr="0" value="1">moi</option>
+                    <option data-nbr-nbr="2" value="2">toi</option>
+                    <option data-nbr-nbr="1" value="2">elle</option>
+              </select>
+              
+              <div class="my-2" id="set">
+                
+              </div>
+             
+            </div>
+    
+          </form>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+<script>
+    $(function () {
+        $('#selectatelier').on('change', function () {
+
+            var capacityValue = $('#selectatelier').find(':selected').data('nbr-nbr');
+            console.log(capacityValue)
+            if(capacityValue>0){
+                $('#message').remove()
+                $('#set').html('<button id="btn" class="btn btn primary"> send </button>')
+            } else if (capacityValue===0) {
+                $('#btn').remove()
+                $('#set').html('<p id="message">plus de place</p>')             
+                
+            } else if (capacityValue==undefined){
+                $('#btn').remove()
+                $('#message').remove()
+            }
+            
+        });
+    });
+</script>
+
+</html>
